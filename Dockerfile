@@ -16,7 +16,7 @@ ENV JENKINS_SLAVE_AGENT_PORT 50000
 #RUN ["cross-build-start"]
 
 # Install dependencies
-RUN apk add --no-cache git git-lfs curl
+RUN apk add --no-cache git git-lfs curl fontconfig ttf-dejavu coreutils
 
 # Get Jenkins
 RUN curl -fL -o /opt/jenkins.war https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
