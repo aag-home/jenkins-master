@@ -12,7 +12,7 @@ services:
       - 8080:8080
       - 50000:50000
     volumes:
-      - ./jenkins_home:/var/jenkins_home
+      - ${KENKINS_HOME:-./jenkins_home}:/var/jenkins_home
       - ./jenkins_config/jenkins.yaml:/var/jenkins_home/jenkins.yaml
     environment:
       - CASC_JENKINS_CONFIG=/var/jenkins_home/jenkins.yaml
