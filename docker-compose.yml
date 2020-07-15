@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  jenkins:
+    build: #TODO: Once plugin installation is handled through c-as-c this can be removed and replaced with 'image'.
+      context: .
+      dockerfile: Dockerfile 
+      args:
+        - PLUGINS=workflow-aggregator github github-branch-source
+    image: aaghome/jenkins-master:latest
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - ./jenkins_config/jenkins.yaml:/var/jenkins_home/jenkins.yaml
+    environment:
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/jenkins.yaml
