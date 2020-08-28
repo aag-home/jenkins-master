@@ -7,7 +7,7 @@ ARG user=jenkins
 ARG PLUGINS
 
 # Jenkins version
-ENV JENKINS_VERSION 2.245
+ENV JENKINS_VERSION 2.254
 
 # Other env variables
 ENV JENKINS_HOME /var/jenkins_home
