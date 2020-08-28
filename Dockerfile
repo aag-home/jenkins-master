@@ -34,7 +34,7 @@ RUN curl -fL -o $JENKINS_WAR https://repo.jenkins-ci.org/public/org/jenkins-ci/m
     curl -fL -o /usr/local/bin/plugins.sh https://raw.githubusercontent.com/jenkinsci/docker/master/plugins.sh && \
     curl -fL -o /usr/local/bin/jenkins-support https://raw.githubusercontent.com/jenkinsci/docker/master/jenkins-support && \
     chmod +x /usr/local/bin/install-plugins.sh /usr/local/bin/jenkins.sh /usr/local/bin/plugins.sh /usr/local/bin/jenkins-support && \
-    /usr/local/bin/install-plugins.sh configuration-as-code configuration-as-code-support git display-url-api:2.3.2 ${PLUGINS}
+    /usr/local/bin/install-plugins.sh configuration-as-code git display-url-api:2.3.2 ${PLUGINS}
 
 # Add Jenkins user and group
 
