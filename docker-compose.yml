@@ -14,6 +14,7 @@ services:
     volumes:
       - ${JENKINS_HOME:-./jenkins_home}:/var/jenkins_home
       - ./jenkins_config/jenkins.yaml:/var/jenkins_home/jenkins.yaml
+    restart: always
     environment:
       JAVA_OPTS: -Djava.awt.headless=true -Djenkins.install.runSetupWizard=false -Xmx1024m -XX:MaxPermSize=512m
       CASC_JENKINS_CONFIG: /var/jenkins_home/jenkins.yaml
