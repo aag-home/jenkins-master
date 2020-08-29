@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11
 
 ARG uid=1500
 ARG gid=1500
@@ -23,7 +23,8 @@ ENV COPY_REFERENCE_FILE_LOG=$JENKINS_HOME/copy_reference_file.log
 #RUN ["cross-build-start"]
 
 # Install dependencies
-RUN apk add --no-cache git git-lfs curl fontconfig ttf-dejavu coreutils bash unzip
+#RUN apk add --no-cache git git-lfs curl fontconfig ttf-dejavu coreutils bash unzip
+RUN apt-get update && apt-get install -y git git-lfs curl fontconfig ttf-dejavu coreutils bash unzip
 
 # Get Jenkins
 
@@ -42,8 +43,10 @@ RUN mkdir -p $JENKINS_HOME \
   && mkdir -p $REF \
   && chown -R ${uid}:${gid} $JENKINS_HOME \
   && chown -R ${uid}:${gid} $REF \
-  && addgroup -g ${gid} ${group} \
-  && adduser -h "$JENKINS_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user}
+#  && addgroup -g ${gid} ${group} \
+  && addgroup --gid ${gid} ${group} \
+#  && adduser -h "$JENKINS_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user}
+  && adduser --disabled-password --home "$JENKINS_HOME" --uid ${uid} --ingroup ${group} --shell /bin/bash  --gecos "jenkins user,,," ${user}
 # Disable cross build
 #RUN ["cross-build-end"]
 
